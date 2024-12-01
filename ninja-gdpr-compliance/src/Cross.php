@@ -193,6 +193,9 @@ if ( !class_exists('NjtCross') ) {
         public function ajax_install_plugin(){
             check_ajax_referer("njt_filebird_cross_nonce", 'nonce', true);
             
+            if( !current_user_can( 'install_plugins' ) || !current_user_can( 'activate_plugins' ) ) {
+                wp_send_json_error( array( 'message' => __( 'Permission denied!', NJT_GDPR_I18N ) ) );
+            }
             $installed = $this->pluginInstaller('filebird');
             if ($installed === false) {
                 wp_send_json_error(array('message' => $installed));
