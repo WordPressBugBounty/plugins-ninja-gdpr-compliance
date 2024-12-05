@@ -95,6 +95,9 @@ You’re done. Enjoy.
 
 == Changelog ==
 
+= Dec 5, 2024 – Version 2.7.2 =
+- Fixed: PHP version
+
 = Dec 1, 2024 – Version 2.7.2 =
 - Fixed: Missing Authorization to Authenticated (Subscriber) install plugin
 

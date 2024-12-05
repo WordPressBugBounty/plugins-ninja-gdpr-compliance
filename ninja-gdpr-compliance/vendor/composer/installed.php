@@ -38,9 +38,9 @@
             'dev_requirement' => false,
         ),
         'maxmind/web-service-common' => array(
-            'pretty_version' => 'v0.10.0',
-            'version' => '0.10.0.0',
-            'reference' => 'd7c7c42fc31bff26e0ded73a6e187bcfb193f9c4',
+            'pretty_version' => 'v0.9.0',
+            'version' => '0.9.0.0',
+            'reference' => '4dc5a3e8df38aea4ca3b1096cee3a038094e9b53',
             'type' => 'library',
             'install_path' => __DIR__ . '/../maxmind/web-service-common',
             'aliases' => array(),
