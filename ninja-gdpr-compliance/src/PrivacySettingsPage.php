@@ -22,6 +22,9 @@ class NjtGdprPrivacySettingsPage
     public function ajaxGetSettings()
     {
         check_ajax_referer('njt_gdpr', 'nonce', true);
+        if( ! njt_gdpr_has_permission() ) {
+            wp_send_json_error();
+        }
         $settings = $this->getSettings();
 
         wp_send_json_success(array(

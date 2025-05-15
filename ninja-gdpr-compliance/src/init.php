@@ -355,6 +355,9 @@ class NjtGdpr
     public function ajaxGetSettings()
     {
         check_ajax_referer('njt_gdpr', 'nonce', true);
+        if( ! njt_gdpr_has_permission() ) {
+            wp_send_json_error();
+        }
         wp_send_json_success(array('settings' => $this->getSettings()));
     }
     public function ajaxRecheckCookie()
@@ -759,7 +762,7 @@ class NjtGdpr
             }
         }
         //add css
-        wp_register_style('njt-gdpr', NJT_GDPR_URL . '/assets/home/css/app.css');
+        wp_register_style('njt-gdpr', NJT_GDPR_URL . '/assets/home/css/app.css', array(), NJT_GDPR_VERSION );
         wp_enqueue_style('njt-gdpr');
 
         wp_register_style('njt-gdpr-th', NJT_GDPR_URL . '/assets/home/css/th.css');
