@@ -36,14 +36,14 @@ class NjtGdprPrivacySettingsPage
         check_ajax_referer('njt_gdpr', 'nonce', true);
 
         if( ! njt_gdpr_has_permission() ) {
-            wp_send_json_error();
+            wp_send_json_error( array('mess' => __('Permission denied.', NJT_GDPR_I18N)) );
         }
 
         $settings = ((isset($_POST['settings'])) ? (array)$_POST['settings']: array());
         $settings = njt_gdpr_maybe_sanitize_array($settings);
         
         update_option('njt_gdpr_privacy_settings_page', $settings);
-        wp_send_json_success();
+        wp_send_json_success(array('mess' => __('Success', NJT_GDPR_I18N)));
     }
     public function privacySettingsPageShortcode()
     {
@@ -78,7 +78,7 @@ class NjtGdprPrivacySettingsPage
                     </tr>
                 </tbody>
             </table>
-            <button type="button" class="njt-gdpr-privacy-settings-btn"><?php _e('Save Changes', NJT_GDPR_I18N); ?></button>
+            <button type="button" class="njt-gdpr-privacy-settings-btn njt_gdpr_btn"><?php _e('Save Changes', NJT_GDPR_I18N); ?></button>
         </form>
         <script type="text/javascript">
             jQuery(document).ready(function($) {

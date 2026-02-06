@@ -50,7 +50,7 @@ class NjtGdprPolicy
         check_ajax_referer('njt_gdpr', 'nonce', true);
 
         if( ! njt_gdpr_has_permission() ) {
-            wp_send_json_error();
+            wp_send_json_error( array('mess' => __('Permission denied.', NJT_GDPR_I18N)) );
         }
         
         $settings = ((isset($_POST['settings'])) ? (array)$_POST['settings']: array());
@@ -79,7 +79,7 @@ class NjtGdprPolicy
             }
         }
         update_option('njt_gdpr_policy', $settings);
-        wp_send_json_success();
+        wp_send_json_success(array('mess' => __('Success', NJT_GDPR_I18N)));
     }
     public function shortcodePolicy($atts)
     {
@@ -89,16 +89,16 @@ class NjtGdprPolicy
         echo '<form action="" method="POST">';
         if ($this->isAcceptedPolicy()) {
             echo '<p>'.esc_html($settings['accepted_text']).'</p>';
-            echo '<button type="button" class="njt_gdpr_policy_decline_btn">'.esc_html(__('Decline', NJT_GDPR_I18N)).'</button>';
+            echo '<button type="button" class="njt_gdpr_policy_decline_btn njt_gdpr_btn">'.esc_html(__('Decline', NJT_GDPR_I18N)).'</button>';
         } else {
-            echo '<button type="button" class="njt_gdpr_policy_accept_btn">'.esc_html(__('Accept', NJT_GDPR_I18N)).'</button>';
+            echo '<button type="button" class="njt_gdpr_policy_accept_btn njt_gdpr_btn">'.esc_html(__('Accept', NJT_GDPR_I18N)).'</button>';
         }
         echo '</form>';
         return ob_get_clean();
     }
     public function registerWpEnqueue()
     {
-        wp_register_script('njt-gdpr-policy', NJT_GDPR_URL . '/assets/home/js/policy.js', array('jquery'), '1.0', false);
+        wp_register_script('njt-gdpr-policy', NJT_GDPR_URL . '/assets/home/js/policy.js', array('jquery'), NJT_GDPR_VERSION, false);
         wp_enqueue_script('njt-gdpr-policy');
         wp_localize_script('njt-gdpr-policy', 'njt_gdpr_policy', array(
             'ajaxurl' => admin_url('admin-ajax.php'),

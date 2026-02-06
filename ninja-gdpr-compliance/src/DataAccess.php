@@ -100,15 +100,15 @@ class NjtGdprDataAccess
     {
         check_ajax_referer('njt_gdpr', 'nonce', true);
         if( ! njt_gdpr_has_permission() ) {
-            wp_send_json_error();
+            wp_send_json_error( array('mess' => __('Permission denied.', NJT_GDPR_I18N)) );
         }
         $settings = ((isset($_POST['settings'])) ? (array)$_POST['settings']: array());
         update_option('njt_gdpr_dataaccess', njt_gdpr_maybe_sanitize_array($settings));
-        wp_send_json_success();
+        wp_send_json_success(array('mess' => __('Success', NJT_GDPR_I18N)));
     }
     public function ajaxRequestAction()
     {
-        if(!apply_filters('njt_gdpr_can_action_data_access', true)){
+        if( ! apply_filters('njt_gdpr_can_action_data_access', true) || ! njt_gdpr_has_permission()){
             wp_send_json_error(array('mess' => __('Permission denied.', NJT_GDPR_I18N)));
         }
         check_ajax_referer('njt_gdpr', 'nonce', true);
@@ -167,7 +167,7 @@ class NjtGdprDataAccess
                 if($current_user_id > 0) {
                     $message .= __("User ID:", NJT_GDPR_I18N) . $current_user_id .  '<br />';
                 }
-                wp_mail($to, $subject, $message);
+                wp_mail($to, $subject, $message, array('Content-Type: text/html'));
             }
         }
         $settings = $this->getSettings();
@@ -183,9 +183,7 @@ class NjtGdprDataAccess
                 <input type="text" name="email" id="njt_gdpr_dataaccess_form_email" class="njt_gdpr_dataaccess_form_email" value="" required />
             </p>
             <p>
-                <button type="button" class="njt_gdpr_btn njt_gdpr_dataaccess_btn">
-                    <?php _e('Submit', NJT_GDPR_I18N); ?>
-                </button>
+                <button type="button" class="njt_gdpr_btn njt_gdpr_dataaccess_btn"><?php _e('Submit', NJT_GDPR_I18N); ?></button>
             </p>
         </form>
         <?php
@@ -193,7 +191,7 @@ class NjtGdprDataAccess
     }
     public function registerWpEnqueue()
     {
-        wp_register_script('njt-gdpr-data-access', NJT_GDPR_URL . '/assets/home/js/data-access.js', array('jquery'), '1.0', false);
+        wp_register_script('njt-gdpr-data-access', NJT_GDPR_URL . '/assets/home/js/data-access.js', array('jquery'), NJT_GDPR_VERSION, false);
         wp_enqueue_script('njt-gdpr-data-access');
         wp_localize_script('njt-gdpr-data-access', 'njt_gdpr_dataaccess', array(
             'ajaxurl' => admin_url('admin-ajax.php'),
@@ -232,7 +230,7 @@ class NjtGdprDataAccess
             $attachments[] = $file_name;
         }
         if (!empty($settings['email_subject']) && !empty($settings['email_body'])) {
-            wp_mail($email_to_send, $settings['email_subject'], $settings['email_body'], '', $attachments);
+            wp_mail($email_to_send, $settings['email_subject'], $settings['email_body'], array('Content-Type: text/html'), $attachments);
             if (apply_filters('njt_gdpr_delete_dataaccess_att', true)) {
                 foreach ($attachments as $k => $v) {
                     @unlink($v);

@@ -35,7 +35,7 @@ class NjtGdprDataBreach
         check_ajax_referer('njt_gdpr', 'nonce', true);
 
         if( ! njt_gdpr_has_permission() ) {
-            wp_send_json_error();
+            wp_send_json_error( array('mess' => __('Permission denied.', NJT_GDPR_I18N)) );
         }
 
         $settings = ((isset($_POST['settings'])) ? (array)$_POST['settings']: array());
@@ -52,7 +52,7 @@ class NjtGdprDataBreach
             $users = get_users();
             $sent = $fail = 0;
             foreach ($users as $k => $user) {
-                $t = wp_mail($user->data->user_email, $settings['email_subject'], $settings['email_body']);
+                $t = wp_mail($user->data->user_email, $settings['email_subject'], $settings['email_body'], array('Content-Type: text/html'));
                 if ($t) {
                     $sent ++;
                 } else {

@@ -4,7 +4,7 @@ Donate link: https://codecanyon.net/item/media-folders-manager-for-wordpress/217
 Tags: cookie consent, cookie banner, gdpr, dsgvo, GDPR compliance
 Requires at least: 3.0
 Tested up to: 6.8
-Stable tag: 2.7.4
+Stable tag: 2.7.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -94,6 +94,10 @@ You’re done. Enjoy.
 1. GDPR Settings & Cookie consent style preview
 
 == Changelog ==
+
+= Dec 17, 2025 - Version 2.7.5 =
+- Improved: Security
+- Improved: Replace Vue.Js with React.Js
 
 = May 15, 2025 - Version 2.7.4 =
 - Fixed: Security

@@ -34,7 +34,7 @@ class NjtGdprEuTraffic
         check_ajax_referer('njt_gdpr', 'nonce', true);
 
         if( ! njt_gdpr_has_permission() ) {
-            wp_send_json_error();
+            wp_send_json_error( array('mess' => __('Permission denied.', NJT_GDPR_I18N)) );
         }
 
         $settings = ((isset($_POST['settings'])) ? (array)$_POST['settings']: array());
@@ -48,6 +48,6 @@ class NjtGdprEuTraffic
             }
         }
         update_option('njt_gdpr_eu', $settings);
-        wp_send_json_success();
+        wp_send_json_success(array('mess' => __('Success', NJT_GDPR_I18N)));
     }
 }

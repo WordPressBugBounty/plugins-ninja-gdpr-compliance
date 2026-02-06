@@ -99,31 +99,27 @@ class NjtGdprForgetMe
         foreach ($_users as $k => $v) {
             $settings['users'][] = array('id' => $v->ID, 'name' => $v->data->user_nicename);
         }
-        wp_send_json_success(array('settings' => $settings, 'users' => $users, 'requests' => $this->getRequests()));
+        wp_send_json_success(array('settings' => $settings, 'users' => $settings['users'], 'requests' => $this->getRequests()));
     }
     public function ajaxUpdateSettings()
     {
         check_ajax_referer('njt_gdpr', 'nonce', true);
 
         if( ! njt_gdpr_has_permission() ) {
-            wp_send_json_error();
+            wp_send_json_error( array('mess' => __('Permission denied.', NJT_GDPR_I18N)) );
         }
 
         $settings = ((isset($_POST['settings'])) ? (array)$_POST['settings']: array());
         $settings = njt_gdpr_maybe_sanitize_array($settings);
         update_option('njt_gdpr_forget_me', $settings);
-        wp_send_json_success();
+        wp_send_json_success(array('mess' => __('Success', NJT_GDPR_I18N)));
     }
     public function ajaxRequestAction()
     {
-        if(!apply_filters('njt_gdpr_can_action_forget_me', true)){
+        if(!apply_filters('njt_gdpr_can_action_forget_me', true) || ! njt_gdpr_has_permission()){
             wp_send_json_error(array('mess' => __('Permission denied.', NJT_GDPR_I18N)));
         }
         check_ajax_referer('njt_gdpr', 'nonce', true);
-
-        if( ! njt_gdpr_has_permission() ) {
-            wp_send_json_error();
-        }
         
         $ids = ((isset($_POST['ids'])) ? (array)$_POST['ids'] : array());
         $ids = array_map('intval', $ids);
@@ -176,7 +172,7 @@ class NjtGdprForgetMe
                         if(!in_array('administrator', $user->roles)) {
                             wp_delete_user($user_id);
                         } else {
-                            exit('cant delete');
+                            wp_send_json_error(array('mess' => __('Can not delete administrator account.', NJT_GDPR_I18N)));
                         }
                     } else {
                         //just delete comments by email
@@ -187,7 +183,7 @@ class NjtGdprForgetMe
                         }
                     }
                     update_post_meta($v, '_date_mail_sent', date('Y-m-d H:i:s', current_time('timestamp', 0)));
-                    wp_mail($request_info->post_title, $settings['email_subject'], $settings['email_body']);
+                    wp_mail($request_info->post_title, $settings['email_subject'], $settings['email_body'], array('Content-Type: text/html'));
                 }
             }
             wp_send_json_success(array('requests' => $this->getRequests()));
@@ -219,15 +215,15 @@ class NjtGdprForgetMe
             update_post_meta($insert_id, '_user_id', $current_user_id);
             if(apply_filters('njt_gdpr_email_admin_when_new_forget', true)) {
                 $to = get_bloginfo('admin_email');
-                $subject = __('Forget Me New Request', NJT_GDPR_I18N);
+                $subject = apply_filters('njt_gdpr_forget_me_email_subject', __('Forget Me New Request', NJT_GDPR_I18N));
                 $message = __("Hi,<br />", NJT_GDPR_I18N);
                 $message .= __("You have new ForgetMe request, here is the detail:<br />", NJT_GDPR_I18N);
                 $message .= __("Email: ", NJT_GDPR_I18N) . $email . '<br />';
-                
                 if($current_user_id > 0) {
                     $message .= __("User ID: ", NJT_GDPR_I18N) . $current_user_id . '<br />';
                 }
-                wp_mail($to, $subject, $message);
+                $message = apply_filters('njt_gdpr_forget_me_email_body', $message);
+                wp_mail($to, $subject, $message, array('Content-Type: text/html'));
             }
         }
         $settings = $this->getSettings();
@@ -243,7 +239,7 @@ class NjtGdprForgetMe
                 <input type="text" name="email" id="njt_gdpr_forget_me_form_email" class="njt_gdpr_forget_me_form_email" value="" required />
             </p>
             <p>
-                <button type="button" class="njt_gdpr_forget_me_btn"><?php _e('Submit', NJT_GDPR_I18N); ?></button>
+                <button type="button" class="njt_gdpr_forget_me_btn njt_gdpr_btn"><?php _e('Submit', NJT_GDPR_I18N); ?></button>
             </p>
         </form>
         <?php
@@ -251,7 +247,7 @@ class NjtGdprForgetMe
     }
     public function registerWpEnqueue()
     {
-        wp_register_script('njt-gdpr-forget-me', NJT_GDPR_URL . '/assets/home/js/forget-me.js', array('jquery'), '1.0', false);
+        wp_register_script('njt-gdpr-forget-me', NJT_GDPR_URL . '/assets/home/js/forget-me.js', array('jquery'), NJT_GDPR_VERSION, false);
         wp_enqueue_script('njt-gdpr-forget-me');
         wp_localize_script('njt-gdpr-forget-me', 'njt_gdpr_forget_me', array(
             'ajaxurl' => admin_url('admin-ajax.php'),

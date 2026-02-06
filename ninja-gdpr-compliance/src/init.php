@@ -21,7 +21,6 @@ class NjtGdpr
          */
         register_activation_hook(NJT_GDPR_FILE, array($this, 'pluginActived'));
 
-        // add_filter('wp_mail_content_type', array($this, 'mailContentType'));
         //start session
         // add_action('init', array($this, 'startSession'), 1);
         //register menu
@@ -88,11 +87,6 @@ class NjtGdpr
         </script>
         <?php
     }
-    public function mailContentType()
-    {
-        return "text/html";
-    }
-
     public function startSession()
     {
         if (!session_id()) {
@@ -282,6 +276,9 @@ class NjtGdpr
         $settings = get_option('njt_gdpr', array());
         $settings = wp_parse_args($settings, $defaults);
 
+        $settings['show_pages'] = array_map('intval', $settings['show_pages']);
+        $settings['hide_pages'] = array_map('intval', $settings['hide_pages']);
+        
         $settings['is_enable_decline_btn'] = (($settings['is_enable_decline_btn'] == '1') ? true : false);
         $settings['is_enable_custom_btn'] = (($settings['is_enable_custom_btn'] == '1') ? true : false);
         $settings['block_cookie'] = (($settings['block_cookie'] == '1') ? true : false);
@@ -371,7 +368,6 @@ class NjtGdpr
         $js = ob_get_clean();
 
         $eu = njt_eu_settings();
-  
         if(($eu['status'] == 'block-all') || ($eu['status'] == 'work' && $eu['country_is_blocked'])) {
             if ($this->userClickedBtn()) {
                 if (!$this->canUseCookie()) {
@@ -458,7 +454,7 @@ class NjtGdpr
         check_ajax_referer('njt_gdpr', 'nonce', true);
 
         if( ! njt_gdpr_has_permission() ) {
-            wp_send_json_error();
+            wp_send_json_error(__('Permission denied.', NJT_GDPR_I18N));
         }
         $settings = ((isset($_POST['settings'])) ? (array)$_POST['settings']: array());
         $content = $settings['content'];
@@ -489,7 +485,7 @@ class NjtGdpr
             }
         }
         update_option('njt_gdpr', $settings);
-        wp_send_json_success();
+        wp_send_json_success(__('Success', NJT_GDPR_I18N));
     }
 
     public function registerAdminEnqueue($hook_suffix)
@@ -509,13 +505,24 @@ class NjtGdpr
                 );
             }
 
-            wp_register_style('njt-gdpr', NJT_GDPR_URL . '/assets/admin/css/app.css');
+            $asset_file = NJT_GDPR_DIR . '/app/build/index.asset.php';
+            $asset = include $asset_file;
+
+            wp_register_style('njt-gdpr', NJT_GDPR_URL . '/app/build/index.css', array(), $asset['version']);
             wp_enqueue_style('njt-gdpr');
 
             wp_register_style('njt-gdpr-th', NJT_GDPR_URL . '/assets/admin/css/th.css');
             wp_enqueue_style('njt-gdpr-th');
 
-            wp_register_script('njt-gdpr', NJT_GDPR_URL . '/assets/admin/js/app.js', array(), '2.0', true);
+            wp_enqueue_script(
+                'njt-gdpr',
+                NJT_GDPR_URL . '/app/build/index.js',
+                $asset['dependencies'],
+                $asset['version'],
+                array(
+                    'in_footer' => true,
+                )
+            );
             wp_enqueue_script('njt-gdpr');
             wp_localize_script('njt-gdpr', 'njt_gdpr', array(
                 'nonce' => wp_create_nonce('njt_gdpr'),
@@ -526,7 +533,7 @@ class NjtGdpr
                     'cookie' => array(
                         'h1' => __('Cookie Popup', NJT_GDPR_I18N),
                         'page_des' => __('', NJT_GDPR_I18N),
-                        'is_block_cookie' => __('Block cookie until user consents ?', NJT_GDPR_I18N),
+                        'is_block_cookie' => __('Block cookie until user consents?', NJT_GDPR_I18N),
                         'display_type' => __('Display type', NJT_GDPR_I18N),
                         'full_width' => __('Full Width', NJT_GDPR_I18N),
                         'popup' => __('Popup', NJT_GDPR_I18N),
@@ -767,15 +774,18 @@ class NjtGdpr
 
         wp_register_style('njt-gdpr-th', NJT_GDPR_URL . '/assets/home/css/th.css');
         wp_enqueue_style('njt-gdpr-th');
-        wp_register_script('njt-gdpr', NJT_GDPR_URL . '/assets/home/js/app.js', array('jquery'), '1.0.1', false);
+        wp_register_script('njt-gdpr', NJT_GDPR_URL . '/assets/home/js/app.js', array('jquery'), NJT_GDPR_VERSION, false);
         wp_enqueue_script('njt-gdpr');
         
+        $current_page_id = $this->getCurrentPageId();
+
         wp_localize_script('njt-gdpr', 'njt_gdpr', array(
             'ajaxurl' => admin_url('admin-ajax.php'),
             'nonce' => wp_create_nonce('njt_gdpr'),
             //'settings' => $settings,
             'plugin_url' => NJT_GDPR_URL,
-            'current_lang' => apply_filters('wpml_current_language', null)
+            'current_lang' => apply_filters('wpml_current_language', null),
+            'current_page_id' => $current_page_id
         ));
     }
     /*
@@ -785,9 +795,7 @@ class NjtGdpr
     public function mainPage()
     {
         ?>
-        <div id="app">
-            <router-view></router-view>
-        </div>
+        <div id="njt-gdpr-app"></div>
         <?php
     }
 
@@ -802,5 +810,35 @@ class NjtGdpr
             $_instance = new self();
         }
         return $_instance;
+    }
+    private function getCurrentPageId()
+    {
+        $current_page_id = '';
+        if (is_singular()) {
+            $current_page_id = (int)get_the_ID();
+        } else {
+            if( function_exists( 'WC' ) ) {
+                // Get WooCommerce special pages ID
+                if ( is_shop() ) {
+                    $current_page_id = wc_get_page_id( 'shop' );
+                } elseif ( is_cart() ) {
+                    $current_page_id = wc_get_page_id( 'cart' );
+                } elseif ( is_checkout() ) {
+                    $current_page_id = wc_get_page_id( 'checkout' );
+                } elseif ( is_account_page() ) {
+                    $current_page_id = wc_get_page_id( 'myaccount' );
+                } elseif ( is_wc_endpoint_url() ) {
+                    // For WooCommerce endpoint URLs (order-received, view-order, etc.)
+                    $current_page_id = wc_get_page_id( 'shop' );
+                } else {
+                    // Fallback to get queried object ID
+                    $current_id = get_queried_object_id();
+                    if ( $current_id ) {
+                        $current_page_id = $current_id;
+                    }
+                }
+            }
+        }
+        return $current_page_id;
     }
 }

@@ -3,7 +3,7 @@
  * Plugin Name: GDPR CCPA Compliance & Cookie Consent Banner
  * Plugin URI: https://ninjateam.org/wordpress-gdpr-compliance/
  * Description: Become compliant with GDPR, CCPA, DPA, Google Ads consent mode, and other privacy regulations.
- * Version: 2.7.4
+ * Version: 2.7.5
  * Author: NinjaTeam
  * Author URI: https://ninjateam.org
  */
@@ -11,7 +11,7 @@ define('NJT_GDPR_FILE', __FILE__);
 define('NJT_GDPR_DIR', realpath(plugin_dir_path(NJT_GDPR_FILE)));
 define('NJT_GDPR_URL', plugins_url('', NJT_GDPR_FILE));
 define('NJT_GDPR_I18N', 'njt_gdpr');
-define('NJT_GDPR_VERSION', '2.7.4');
+define('NJT_GDPR_VERSION', '2.7.5');
 
 
 if ( file_exists(dirname(__FILE__) . '/vendor/autoload.php') ) {

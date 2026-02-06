@@ -1,110 +1,182 @@
-#, fuzzy
+# Copyright (C) 2025 NinjaTeam
+# This file is distributed under the same license as the GDPR CCPA Compliance & Cookie Consent Banner plugin.
 msgid ""
 msgstr ""
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
-"Project-Id-Version: Ninja GDPR Compliance\n"
-"POT-Creation-Date: 2021-02-19 15:10+0700\n"
-"PO-Revision-Date: 2021-02-19 15:10+0700\n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"Project-Id-Version: GDPR CCPA Compliance & Cookie Consent Banner 2.7.5\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ninja-gdpr\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.1\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
-"X-Poedit-WPHeader: njt-gdpr.php\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
-"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-SearchPathExcluded-0: *.min.js\n"
-"X-Poedit-SearchPathExcluded-1: vendor\n"
+"POT-Creation-Date: 2025-12-10T08:32:56+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.11.0\n"
+
+#. Plugin Name of the plugin
+#: njt-gdpr.php
+msgid "GDPR CCPA Compliance & Cookie Consent Banner"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: njt-gdpr.php
+msgid "https://ninjateam.org/wordpress-gdpr-compliance/"
+msgstr ""
+
+#. Description of the plugin
+#: njt-gdpr.php
+msgid "Become compliant with GDPR, CCPA, DPA, Google Ads consent mode, and other privacy regulations."
+msgstr ""
+
+#. Author of the plugin
+#: njt-gdpr.php
+msgid "NinjaTeam"
+msgstr ""
+
+#. Author URI of the plugin
+#: njt-gdpr.php
+msgid "https://ninjateam.org"
+msgstr ""
+
+#: src/Cross.php:125
+msgid "Recommend"
+msgstr ""
+
+#: src/Cross.php:197
+msgid "Permission denied!"
+msgstr ""
 
 #: src/DataAccess.php:25
 msgid "NJT Data Access"
 msgstr ""
 
-#: src/DataAccess.php:53 src/DataAccess.php:128 src/DataRectification.php:53
-#: src/DataRectification.php:124 src/DataRectification.php:138
-#: src/ForgetMe.php:56 src/Policy.php:136
+#: src/DataAccess.php:53
+#: src/DataAccess.php:107
+#: src/DataAccess.php:134
+#: src/DataRectification.php:53
+#: src/DataRectification.php:110
+#: src/DataRectification.php:132
+#: src/DataRectification.php:150
+#: src/EuTraffic.php:51
+#: src/ForgetMe.php:56
+#: src/ForgetMe.php:115
+#: src/init.php:488
+#: src/Integrations.php:266
+#: src/Policy.php:82
+#: src/Policy.php:144
+#: src/PrivacySettingsPage.php:46
+#: src/Term.php:70
+#: src/Unsubscribe.php:53
 msgid "Success"
 msgstr ""
 
-#: src/DataAccess.php:106 src/DataBreach.php:56 src/DataRectification.php:108
-#: src/ForgetMe.php:112
+#: src/DataAccess.php:103
+#: src/DataAccess.php:112
+#: src/DataBreach.php:38
+#: src/DataBreach.php:64
+#: src/DataRectification.php:101
+#: src/DataRectification.php:116
+#: src/EuTraffic.php:37
+#: src/ForgetMe.php:109
+#: src/ForgetMe.php:120
+#: src/init.php:457
+#: src/Integrations.php:250
+#: src/Policy.php:53
+#: src/PrivacySettingsPage.php:39
+#: src/Term.php:48
+#: src/Unsubscribe.php:38
 msgid "Permission denied."
 msgstr ""
 
-#: src/DataAccess.php:130
+#: src/DataAccess.php:136
 msgid "No requests choosed"
 msgstr ""
 
-#: src/DataAccess.php:141 src/DataRectification.php:158 src/ForgetMe.php:194
+#: src/DataAccess.php:147
+#: src/DataRectification.php:170
+#: src/ForgetMe.php:203
 msgid "Email is required."
 msgstr ""
 
-#: src/DataAccess.php:144 src/DataRectification.php:164 src/ForgetMe.php:197
+#: src/DataAccess.php:150
+#: src/DataRectification.php:176
+#: src/ForgetMe.php:206
 msgid "Invalid email format."
 msgstr ""
 
-#: src/DataAccess.php:157
+#: src/DataAccess.php:163
 msgid "Data Access New Request"
 msgstr ""
 
-#: src/DataAccess.php:158 src/DataRectification.php:183 src/ForgetMe.php:210
+#: src/DataAccess.php:164
+#: src/DataRectification.php:195
+#: src/ForgetMe.php:219
 msgid "Hi,<br />"
 msgstr ""
 
-#: src/DataAccess.php:159
+#: src/DataAccess.php:165
 msgid "You have new Data Access request, here is the detail:<br />"
 msgstr ""
 
-#: src/DataAccess.php:160 src/DataRectification.php:185 src/ForgetMe.php:212
+#: src/DataAccess.php:166
+#: src/DataRectification.php:197
+#: src/ForgetMe.php:221
 msgid "Email: "
 msgstr ""
 
-#: src/DataAccess.php:162 src/DataRectification.php:187
+#: src/DataAccess.php:168
+#: src/DataRectification.php:199
 msgid "User ID:"
 msgstr ""
 
-#: src/DataAccess.php:176 src/ForgetMe.php:229 src/init.php:556
-#: src/init.php:583 src/init.php:608
+#: src/DataAccess.php:182
+#: src/ForgetMe.php:238
+#: src/init.php:589
+#: src/init.php:616
+#: src/init.php:641
 msgid "Email"
 msgstr ""
 
-#: src/DataAccess.php:181 src/DataRectification.php:201 src/ForgetMe.php:233
+#: src/DataAccess.php:186
+#: src/DataRectification.php:213
+#: src/ForgetMe.php:242
 msgid "Submit"
 msgstr ""
 
-#: src/DataAccess.php:240
+#: src/DataAccess.php:244
 msgid " User "
 msgstr ""
 
-#: src/DataAccess.php:242
+#: src/DataAccess.php:246
 msgid "- Woocomerece "
 msgstr ""
 
-#: src/DataAccess.php:256
-msgid "========= Comment =========\n"
+#: src/DataAccess.php:260
+msgid ""
+"========= Comment =========\n"
+""
 msgstr ""
 
-#: src/DataAccess.php:267
-msgid "========= Posts =========\n"
+#: src/DataAccess.php:271
+msgid ""
+"========= Posts =========\n"
+""
 msgstr ""
 
-#: src/DataAccess.php:284
-msgid "========= Gravity Form Entries =========\n"
+#: src/DataAccess.php:288
+msgid ""
+"========= Gravity Form Entries =========\n"
+""
 msgstr ""
 
-#: src/DataBreach.php:37 src/DataRectification.php:161 src/Integrations.php:130
-#: src/Integrations.php:141
+#: src/DataBreach.php:45
+#: src/DataRectification.php:173
+#: src/Integrations.php:134
+#: src/Integrations.php:145
 msgid "Please complete all required fields."
 msgstr ""
 
-#: src/DataBreach.php:54
-#, php-format
+#: src/DataBreach.php:62
 msgid "Sent to %1$d users. Success: %2$d. Fail: %3$d"
 msgstr ""
 
@@ -112,37 +184,35 @@ msgstr ""
 msgid "NJT Data Rectification"
 msgstr ""
 
-#: src/DataRectification.php:99
+#: src/DataRectification.php:107
 msgid "Please complete all required field"
 msgstr ""
 
-#: src/DataRectification.php:130
-msgid ""
-"Error, please enter Email Subject and Email Body first, then save and try "
-"again."
+#: src/DataRectification.php:139
+msgid "Error, please enter Email Subject and Email Body first, then save and try again."
 msgstr ""
 
-#: src/DataRectification.php:144
+#: src/DataRectification.php:156
 msgid "No requests choosed."
 msgstr ""
 
-#: src/DataRectification.php:182
+#: src/DataRectification.php:194
 msgid "Data Rectification New Request"
 msgstr ""
 
-#: src/DataRectification.php:184
+#: src/DataRectification.php:196
 msgid "You have new Data Rectification request, here is the detail:<br />"
 msgstr ""
 
-#: src/DataRectification.php:198
+#: src/DataRectification.php:210
 msgid "Your Email"
 msgstr ""
 
-#: src/DataRectification.php:199
+#: src/DataRectification.php:211
 msgid "Enter your information as it currently exists in our system"
 msgstr ""
 
-#: src/DataRectification.php:200
+#: src/DataRectification.php:212
 msgid "Enter the correct version of your information"
 msgstr ""
 
@@ -150,97 +220,20 @@ msgstr ""
 msgid "NJT Forget Me"
 msgstr ""
 
-#: src/ForgetMe.php:209
+#: src/ForgetMe.php:175
+msgid "Can not delete administrator account."
+msgstr ""
+
+#: src/ForgetMe.php:218
 msgid "Forget Me New Request"
 msgstr ""
 
-#: src/ForgetMe.php:211
+#: src/ForgetMe.php:220
 msgid "You have new ForgetMe request, here is the detail:<br />"
 msgstr ""
 
-#: src/ForgetMe.php:215
+#: src/ForgetMe.php:223
 msgid "User ID: "
-msgstr ""
-
-#: src/Integrations.php:182 src/Integrations.php:186 src/Integrations.php:189
-#: src/Integrations.php:193
-msgid ""
-"By submitting this form, you hereby agree that we may collect, store and "
-"process your data that you provided."
-msgstr ""
-
-#: src/Integrations.php:201
-msgid "Do you agree to storage of your data?"
-msgstr ""
-
-#: src/Integrations.php:202
-msgid "Yes"
-msgstr ""
-
-#: src/Integrations.php:203
-msgid "You have to agree with permision"
-msgstr ""
-
-#: src/Policy.php:29
-msgid "You've accepted the Privacy Policy."
-msgstr ""
-
-#: src/Policy.php:84 src/Term.php:93 src/init.php:237
-msgid "Decline"
-msgstr ""
-
-#: src/Policy.php:86 src/Term.php:95 src/init.php:232
-msgid "Accept"
-msgstr ""
-
-#: src/PrivacySettingsPage.php:15
-msgid "We use cookies to provide a personalised experience for our users."
-msgstr ""
-
-#: src/PrivacySettingsPage.php:16
-msgid ""
-"Third party service for managing advertisement activities related to the "
-"resource via Facebook"
-msgstr ""
-
-#: src/PrivacySettingsPage.php:17
-msgid ""
-"Used for aggregated statistics to improve user experience on the resource."
-msgstr ""
-
-#: src/PrivacySettingsPage.php:50
-msgid "Name"
-msgstr ""
-
-#: src/PrivacySettingsPage.php:51 src/init.php:623
-msgid "Description"
-msgstr ""
-
-#: src/PrivacySettingsPage.php:52
-msgid "Enable ?"
-msgstr ""
-
-#: src/PrivacySettingsPage.php:57
-msgid "Cookie"
-msgstr ""
-
-#: src/PrivacySettingsPage.php:62 src/init.php:630 src/init.php:653
-#: src/init.php:675
-msgid "Facebook Pixel"
-msgstr ""
-
-#: src/PrivacySettingsPage.php:67 src/init.php:632 src/init.php:654
-msgid "Google Analytics"
-msgstr ""
-
-#: src/PrivacySettingsPage.php:73 src/init.php:539 src/init.php:553
-#: src/init.php:580 src/init.php:605 src/init.php:635 src/init.php:663
-#: src/init.php:681 src/init.php:693 src/init.php:719
-msgid "Save Changes"
-msgstr ""
-
-#: src/PrivacySettingsPage.php:102 src/init.php:499
-msgid "Please refresh and try again."
 msgstr ""
 
 #: src/functions.php:81
@@ -755,519 +748,681 @@ msgstr ""
 msgid "Zimbabwe"
 msgstr ""
 
-#: src/init.php:114 src/init.php:201 src/init.php:202 src/init.php:677
+#: src/init.php:115
+#: src/init.php:213
+#: src/init.php:214
+#: src/init.php:710
 msgid "Privacy Settings Page"
 msgstr ""
 
-#: src/init.php:126 src/init.php:127
+#: src/init.php:138
+#: src/init.php:139
 msgid "Ninja GDPR"
 msgstr ""
 
-#: src/init.php:136 src/init.php:137 src/init.php:501 views/cookie-popup.php:2
+#: src/init.php:148
+#: src/init.php:149
+#: src/init.php:534
+#: views/cookie-popup.php:2
 msgid "Cookie Popup"
 msgstr ""
 
-#: src/init.php:145 src/init.php:146 src/init.php:659
+#: src/init.php:157
+#: src/init.php:158
+#: src/init.php:692
 msgid "Privacy Policy"
 msgstr ""
 
-#: src/init.php:153 src/init.php:154 src/init.php:690
+#: src/init.php:165
+#: src/init.php:166
+#: src/init.php:723
 msgid "Terms and Conditions"
 msgstr ""
 
-#: src/init.php:161 src/init.php:162
+#: src/init.php:173
+#: src/init.php:174
 msgid "Forget Me"
 msgstr ""
 
-#: src/init.php:169 src/init.php:170 src/init.php:547
+#: src/init.php:181
+#: src/init.php:182
+#: src/init.php:580
 msgid "Data Access"
 msgstr ""
 
-#: src/init.php:177 src/init.php:178 src/init.php:567
+#: src/init.php:189
+#: src/init.php:190
+#: src/init.php:600
 msgid "Data Breach"
 msgstr ""
 
-#: src/init.php:185 src/init.php:186 src/init.php:574
+#: src/init.php:197
+#: src/init.php:198
+#: src/init.php:607
 msgid "Data Rectification"
 msgstr ""
 
-#: src/init.php:193 src/init.php:194 src/init.php:620
+#: src/init.php:205
+#: src/init.php:206
+#: src/init.php:653
 msgid "Integrations"
 msgstr ""
 
-#: src/init.php:209 src/init.php:210 src/init.php:697
+#: src/init.php:221
+#: src/init.php:222
+#: src/init.php:730
 msgid "EU Traffic"
 msgstr ""
 
-#: src/init.php:217 src/init.php:218 src/init.php:709
+#: src/init.php:229
+#: src/init.php:230
+#: src/init.php:742
 msgid "Unsubscribe"
 msgstr ""
 
-#: src/init.php:230
-msgid ""
-"We use cookies to give you the best online experience. By agreeing you "
-"accept the use of cookies in accordance with our cookie policy."
+#: src/init.php:242
+msgid "We use cookies to give you the best online experience. By agreeing you accept the use of cookies in accordance with our cookie policy."
 msgstr ""
 
-#: src/init.php:253
+#: src/init.php:244
+#: src/Policy.php:94
+#: src/Term.php:105
+msgid "Accept"
+msgstr ""
+
+#: src/init.php:249
+#: src/Policy.php:92
+#: src/Term.php:103
+msgid "Decline"
+msgstr ""
+
+#: src/init.php:265
 msgid "Read More"
 msgstr ""
 
-#: src/init.php:503
-msgid "Block cookie until user consents ?"
-msgstr ""
-
-#: src/init.php:504
-msgid "Display type"
-msgstr ""
-
-#: src/init.php:505
-msgid "Full Width"
-msgstr ""
-
-#: src/init.php:506
-msgid "Popup"
-msgstr ""
-
-#: src/init.php:507 src/init.php:510
-msgid "Position"
-msgstr ""
-
-#: src/init.php:508
-msgid "Top"
-msgstr ""
-
-#: src/init.php:509
-msgid "Bottom"
-msgstr ""
-
-#: src/init.php:511
-msgid "Top Left"
-msgstr ""
-
-#: src/init.php:512
-msgid "Top Right"
-msgstr ""
-
-#: src/init.php:513
-msgid "Bottom Left"
-msgstr ""
-
-#: src/init.php:514
-msgid "Bottom Right"
-msgstr ""
-
-#: src/init.php:515
-msgid "Border Radius"
-msgstr ""
-
-#: src/init.php:516
-msgid "Max Width (px)"
-msgstr ""
-
-#: src/init.php:517
-msgid "Popup Colors"
-msgstr ""
-
-#: src/init.php:518 src/init.php:521 src/init.php:527 src/init.php:533
-msgid "Background"
-msgstr ""
-
-#: src/init.php:519 src/init.php:522 src/init.php:528 src/init.php:534
-msgid "Text"
-msgstr ""
-
-#: src/init.php:520
-msgid "Agree Button Colors"
-msgstr ""
-
-#: src/init.php:523
-msgid "Enable Decline Button ?"
-msgstr ""
-
-#: src/init.php:524
-msgid "On"
-msgstr ""
-
-#: src/init.php:525
-msgid "Off"
-msgstr ""
-
-#: src/init.php:526
-msgid "Decline Button Colors"
-msgstr ""
-
-#: src/init.php:529
-msgid "Enable Custom Button ?"
-msgstr ""
-
-#: src/init.php:530
-msgid "Custom Button Text"
-msgstr ""
-
-#: src/init.php:531
-msgid "Custom Button URL"
+#: src/init.php:427
+#: src/init.php:434
+msgid "Loading"
 msgstr ""
 
 #: src/init.php:532
-msgid "Colors"
-msgstr ""
-
-#: src/init.php:535
-msgid "Display On:"
+#: src/PrivacySettingsPage.php:110
+msgid "Please refresh and try again."
 msgstr ""
 
 #: src/init.php:536
-msgid "All Pages But Except:"
+msgid "Block cookie until user consents?"
 msgstr ""
 
 #: src/init.php:537
-msgid "Selected Pages:"
+msgid "Display type"
 msgstr ""
 
-#: src/init.php:538 views/cookie-popup.php:59 views/cookie-popup.php:92
-msgid "All"
+#: src/init.php:538
+msgid "Full Width"
+msgstr ""
+
+#: src/init.php:539
+msgid "Popup"
+msgstr ""
+
+#: src/init.php:540
+#: src/init.php:543
+msgid "Position"
 msgstr ""
 
 #: src/init.php:541
-msgid "Popup Style"
+msgid "Top"
 msgstr ""
 
-#: src/init.php:542 views/cookie-popup.php:34
-msgid "Display"
+#: src/init.php:542
+msgid "Bottom"
 msgstr ""
 
-#: src/init.php:548 src/init.php:575 src/init.php:596 src/init.php:660
-#: src/init.php:678 src/init.php:691
-msgid "Shortcode"
+#: src/init.php:544
+msgid "Top Left"
+msgstr ""
+
+#: src/init.php:545
+msgid "Top Right"
+msgstr ""
+
+#: src/init.php:546
+msgid "Bottom Left"
+msgstr ""
+
+#: src/init.php:547
+msgid "Bottom Right"
+msgstr ""
+
+#: src/init.php:548
+msgid "Border Radius"
 msgstr ""
 
 #: src/init.php:549
-msgid "Place shortcode on your existing Data Access page."
+msgid "Max Width (px)"
 msgstr ""
 
-#: src/init.php:550 src/init.php:568 src/init.php:577 src/init.php:598
-msgid "Notification email subject"
+#: src/init.php:550
+msgid "Popup Colors"
 msgstr ""
 
-#: src/init.php:551 src/init.php:569 src/init.php:578 src/init.php:599
-msgid "Notification email body"
-msgstr ""
-
-#: src/init.php:552 src/init.php:579 src/init.php:604
-msgid "Success Message"
-msgstr ""
-
+#: src/init.php:551
 #: src/init.php:554
-msgid "Data Access List"
+#: src/init.php:560
+#: src/init.php:566
+msgid "Background"
 msgstr ""
 
-#: src/init.php:555 src/init.php:582 src/init.php:607
-msgid "User ID"
+#: src/init.php:552
+#: src/init.php:555
+#: src/init.php:561
+#: src/init.php:567
+msgid "Text"
 msgstr ""
 
-#: src/init.php:557 src/init.php:609
-msgid "Email Request"
+#: src/init.php:553
+msgid "Agree Button Colors"
 msgstr ""
 
-#: src/init.php:558 src/init.php:584 src/init.php:610
-msgid "Request Date"
+#: src/init.php:556
+msgid "Enable Decline Button ?"
 msgstr ""
 
-#: src/init.php:559 src/init.php:585 src/init.php:611
-msgid "Mail Sent Date"
+#: src/init.php:557
+msgid "On"
 msgstr ""
 
-#: src/init.php:560 src/init.php:586 src/init.php:612
-msgid "Actions"
+#: src/init.php:558
+msgid "Off"
 msgstr ""
 
-#: src/init.php:561 src/init.php:587
-msgid "Send Email"
+#: src/init.php:559
+msgid "Decline Button Colors"
 msgstr ""
 
-#: src/init.php:562 src/init.php:588 src/init.php:614
-msgid "Remove"
+#: src/init.php:562
+msgid "Enable Custom Button ?"
 msgstr ""
 
-#: src/init.php:563 src/init.php:589 src/init.php:615
-msgid "Apply"
+#: src/init.php:563
+msgid "Custom Button Text"
+msgstr ""
+
+#: src/init.php:564
+msgid "Custom Button URL"
+msgstr ""
+
+#: src/init.php:565
+msgid "Colors"
+msgstr ""
+
+#: src/init.php:568
+msgid "Display On:"
+msgstr ""
+
+#: src/init.php:569
+msgid "All Pages But Except:"
 msgstr ""
 
 #: src/init.php:570
-msgid "Save Changes And Send To All User"
+msgid "Selected Pages:"
 msgstr ""
 
-#: src/init.php:576
-msgid "Place shortcode on your existing Data Rectification page."
+#: src/init.php:571
+#: views/cookie-popup.php:59
+#: views/cookie-popup.php:92
+msgid "All"
+msgstr ""
+
+#: src/init.php:572
+#: src/init.php:586
+#: src/init.php:613
+#: src/init.php:638
+#: src/init.php:668
+#: src/init.php:696
+#: src/init.php:714
+#: src/init.php:726
+#: src/init.php:752
+#: src/PrivacySettingsPage.php:81
+msgid "Save Changes"
+msgstr ""
+
+#: src/init.php:574
+msgid "Popup Style"
+msgstr ""
+
+#: src/init.php:575
+#: views/cookie-popup.php:34
+msgid "Display"
 msgstr ""
 
 #: src/init.php:581
-msgid "Data Rectification List"
+#: src/init.php:608
+#: src/init.php:629
+#: src/init.php:693
+#: src/init.php:711
+#: src/init.php:724
+msgid "Shortcode"
+msgstr ""
+
+#: src/init.php:582
+msgid "Place shortcode on your existing Data Access page."
+msgstr ""
+
+#: src/init.php:583
+#: src/init.php:601
+#: src/init.php:610
+#: src/init.php:631
+msgid "Notification email subject"
+msgstr ""
+
+#: src/init.php:584
+#: src/init.php:602
+#: src/init.php:611
+#: src/init.php:632
+msgid "Notification email body"
+msgstr ""
+
+#: src/init.php:585
+#: src/init.php:612
+#: src/init.php:637
+msgid "Success Message"
+msgstr ""
+
+#: src/init.php:587
+msgid "Data Access List"
+msgstr ""
+
+#: src/init.php:588
+#: src/init.php:615
+#: src/init.php:640
+msgid "User ID"
 msgstr ""
 
 #: src/init.php:590
-msgid "Current information"
+#: src/init.php:642
+msgid "Email Request"
 msgstr ""
 
 #: src/init.php:591
-msgid "New information"
+#: src/init.php:617
+#: src/init.php:643
+msgid "Request Date"
+msgstr ""
+
+#: src/init.php:592
+#: src/init.php:618
+#: src/init.php:644
+msgid "Mail Sent Date"
+msgstr ""
+
+#: src/init.php:593
+#: src/init.php:619
+#: src/init.php:645
+msgid "Actions"
+msgstr ""
+
+#: src/init.php:594
+#: src/init.php:620
+msgid "Send Email"
 msgstr ""
 
 #: src/init.php:595
-msgid "Right to be Forgotten"
+#: src/init.php:621
+#: src/init.php:647
+msgid "Remove"
 msgstr ""
 
-#: src/init.php:597
-msgid "Place shortcode on your existing Forget Me page."
-msgstr ""
-
-#: src/init.php:600
-msgid "With posts: "
-msgstr ""
-
-#: src/init.php:601
-msgid "Delete"
-msgstr ""
-
-#: src/init.php:602
-msgid "Assign To Another User"
+#: src/init.php:596
+#: src/init.php:622
+#: src/init.php:648
+msgid "Apply"
 msgstr ""
 
 #: src/init.php:603
-msgid "Assign posts to user: "
+msgid "Save Changes And Send To All User"
 msgstr ""
 
-#: src/init.php:606
-msgid "Forget Me List"
+#: src/init.php:609
+msgid "Place shortcode on your existing Data Rectification page."
 msgstr ""
 
-#: src/init.php:613
-msgid "Forget And Send Email"
+#: src/init.php:614
+msgid "Data Rectification List"
 msgstr ""
 
-#: src/init.php:616
-msgid "User account will be deleted. Are you use?"
+#: src/init.php:623
+msgid "Current information"
 msgstr ""
 
-#: src/init.php:621 src/init.php:647
-msgid "WooCommerce"
+#: src/init.php:624
+msgid "New information"
 msgstr ""
 
-#: src/init.php:622
-msgid "Inject consent checkbox to order form?"
+#: src/init.php:628
+msgid "Right to be Forgotten"
 msgstr ""
 
-#: src/init.php:624 src/init.php:648
-msgid "Comments"
-msgstr ""
-
-#: src/init.php:625
-msgid "Inject consent checkbox to comments form?"
-msgstr ""
-
-#: src/init.php:626 src/init.php:649
-msgid "User Data"
-msgstr ""
-
-#: src/init.php:627
-msgid "This description will appear in WordPress Registion Form"
-msgstr ""
-
-#: src/init.php:628 src/init.php:650
-msgid "Contact Form 7"
-msgstr ""
-
-#: src/init.php:629
-msgid "Inject consent checkbox to CF7 form?"
-msgstr ""
-
-#: src/init.php:631
-msgid "Block Facebook Pixel cookies until user accepts cookies?"
+#: src/init.php:630
+msgid "Place shortcode on your existing Forget Me page."
 msgstr ""
 
 #: src/init.php:633
-msgid "Block Google Analytics cookies until user accepts cookies?"
+msgid "With posts: "
 msgstr ""
 
 #: src/init.php:634
-msgid "Google Analytics Tracking ID: "
+msgid "Delete"
 msgstr ""
 
-#: src/init.php:636 src/init.php:652
-msgid "Gravity Form"
+#: src/init.php:635
+msgid "Assign To Another User"
 msgstr ""
 
-#: src/init.php:637
-msgid "Inject consent checkbox to Gravity Form?"
-msgstr ""
-
-#: src/init.php:638
-msgid "Label"
+#: src/init.php:636
+msgid "Assign posts to user: "
 msgstr ""
 
 #: src/init.php:639
-msgid "Checkbox Text"
+msgid "Forget Me List"
 msgstr ""
 
-#: src/init.php:640
-msgid "Validation Text"
+#: src/init.php:646
+msgid "Forget And Send Email"
 msgstr ""
 
-#: src/init.php:641 src/init.php:646
-msgid "Addthis"
+#: src/init.php:649
+msgid "User account will be deleted. Are you use?"
 msgstr ""
 
-#: src/init.php:642
-msgid "Block Addthis until user consents ?"
+#: src/init.php:654
+#: src/init.php:680
+msgid "WooCommerce"
 msgstr ""
 
-#: src/init.php:643 src/init.php:651
-msgid "BuddyPress"
+#: src/init.php:655
+msgid "Inject consent checkbox to order form?"
 msgstr ""
 
-#: src/init.php:644
-msgid "Inject consent checkbox to BuddyPress forms?"
+#: src/init.php:656
+#: src/PrivacySettingsPage.php:59
+msgid "Description"
+msgstr ""
+
+#: src/init.php:657
+#: src/init.php:681
+msgid "Comments"
+msgstr ""
+
+#: src/init.php:658
+msgid "Inject consent checkbox to comments form?"
+msgstr ""
+
+#: src/init.php:659
+#: src/init.php:682
+msgid "User Data"
+msgstr ""
+
+#: src/init.php:660
+msgid "This description will appear in WordPress Registion Form"
 msgstr ""
 
 #: src/init.php:661
-msgid ""
-"Place shortcode on your existing Privacy Policy page to add an accept button."
+#: src/init.php:683
+msgid "Contact Form 7"
 msgstr ""
 
-#: src/init.php:662 src/init.php:694 src/init.php:706 src/init.php:712
-msgid "None"
+#: src/init.php:662
+msgid "Inject consent checkbox to CF7 form?"
+msgstr ""
+
+#: src/init.php:663
+#: src/init.php:686
+#: src/init.php:708
+#: src/PrivacySettingsPage.php:70
+msgid "Facebook Pixel"
 msgstr ""
 
 #: src/init.php:664
-msgid "Page to redirect to after Privacy Policy is accepted:"
+msgid "Block Facebook Pixel cookies until user accepts cookies?"
 msgstr ""
 
-#: src/init.php:665 src/init.php:687
-msgid "Set consent expire time (days)"
+#: src/init.php:665
+#: src/init.php:687
+#: src/PrivacySettingsPage.php:75
+msgid "Google Analytics"
 msgstr ""
 
 #: src/init.php:666
-msgid "Require logged in users to accept Privacy Policy (redirect) ?"
+msgid "Block Google Analytics cookies until user accepts cookies?"
 msgstr ""
 
 #: src/init.php:667
-msgid ""
-"Require not logged in users/guests to accept Privacy Policy (redirect) ?"
-msgstr ""
-
-#: src/init.php:668
-msgid ""
-"Redirect to Privacy Policy first ? (if Terms and Conditions also redirect)"
+msgid "Google Analytics Tracking ID: "
 msgstr ""
 
 #: src/init.php:669
-msgid "Privacy Policy page:"
+#: src/init.php:685
+msgid "Gravity Form"
 msgstr ""
 
 #: src/init.php:670
-msgid "Accepted Message: "
+msgid "Inject consent checkbox to Gravity Form?"
+msgstr ""
+
+#: src/init.php:671
+msgid "Label"
+msgstr ""
+
+#: src/init.php:672
+msgid "Checkbox Text"
+msgstr ""
+
+#: src/init.php:673
+msgid "Validation Text"
 msgstr ""
 
 #: src/init.php:674
-msgid "Cookie Description"
+#: src/init.php:679
+msgid "Addthis"
+msgstr ""
+
+#: src/init.php:675
+msgid "Block Addthis until user consents ?"
 msgstr ""
 
 #: src/init.php:676
-msgid "Google Analytics\t"
+#: src/init.php:684
+msgid "BuddyPress"
 msgstr ""
 
-#: src/init.php:679
-msgid "Place shortcode on your existing Privacy Settings page."
+#: src/init.php:677
+msgid "Inject consent checkbox to BuddyPress forms?"
 msgstr ""
 
-#: src/init.php:680
-msgid "Choose your Privacy Settings page"
+#: src/init.php:694
+msgid "Place shortcode on your existing Privacy Policy page to add an accept button."
 msgstr ""
 
-#: src/init.php:685
-msgid "Term page:"
+#: src/init.php:695
+#: src/init.php:727
+#: src/init.php:739
+#: src/init.php:745
+msgid "None"
 msgstr ""
 
-#: src/init.php:686
-msgid "Page to redirect to after Term is accepted:"
-msgstr ""
-
-#: src/init.php:688
-msgid "Require logged in users to accept Term (redirect) ?"
-msgstr ""
-
-#: src/init.php:689
-msgid "Require not logged in users/guests to accept Term (redirect) ?"
-msgstr ""
-
-#: src/init.php:692
-msgid "Place shortcode on your existing Term page to add an accept button."
+#: src/init.php:697
+msgid "Page to redirect to after Privacy Policy is accepted:"
 msgstr ""
 
 #: src/init.php:698
-msgid "Select countries"
+#: src/init.php:720
+msgid "Set consent expire time (days)"
 msgstr ""
 
-#: src/init.php:699 src/init.php:710
-msgid " "
+#: src/init.php:699
+msgid "Require logged in users to accept Privacy Policy (redirect) ?"
 msgstr ""
 
 #: src/init.php:700
-msgid "Refuse all countries?"
+msgid "Require not logged in users/guests to accept Privacy Policy (redirect) ?"
 msgstr ""
 
 #: src/init.php:701
-msgid "Save changes"
+msgid "Redirect to Privacy Policy first ? (if Terms and Conditions also redirect)"
 msgstr ""
 
 #: src/init.php:702
-msgid "Options"
+msgid "Privacy Policy page:"
 msgstr ""
 
 #: src/init.php:703
-msgid "Select countries to refuse"
+msgid "Accepted Message: "
 msgstr ""
 
-#: src/init.php:704
-msgid ""
-"Only apply GDPR for EU Countries (E.g: Cookie Popup displays on countries "
-"you select below only)"
+#: src/init.php:707
+msgid "Cookie Description"
 msgstr ""
 
-#: src/init.php:705
-msgid "Redirect those countries to this page (works with non-admin accounts): "
+#: src/init.php:709
+msgid "Google Analytics\t"
 msgstr ""
 
-#: src/init.php:711
-msgid "Unsubscribe Page"
+#: src/init.php:712
+msgid "Place shortcode on your existing Privacy Settings page."
 msgstr ""
 
 #: src/init.php:713
-msgid "Are you using Mailchimp?"
-msgstr ""
-
-#: src/init.php:714
-msgid "Mailchimp Unsubscribe URL"
-msgstr ""
-
-#: src/init.php:715
-msgid ""
-"Enter your MailChimp Unsubscribe URL here. <a href=\"https://kb.mailchimp."
-"com/lists/signup-forms/find-the-unsubscribe-link-for-your-list\" target="
-"\"_blank\">How to get Mailchimp Unsubscribe URL?</a>"
-msgstr ""
-
-#: src/init.php:716
-msgid "Create Iframe"
-msgstr ""
-
-#: src/init.php:717
-msgid "Mailchimp Iframe Code"
+msgid "Choose your Privacy Settings page"
 msgstr ""
 
 #: src/init.php:718
+msgid "Term page:"
+msgstr ""
+
+#: src/init.php:719
+msgid "Page to redirect to after Term is accepted:"
+msgstr ""
+
+#: src/init.php:721
+msgid "Require logged in users to accept Term (redirect) ?"
+msgstr ""
+
+#: src/init.php:722
+msgid "Require not logged in users/guests to accept Term (redirect) ?"
+msgstr ""
+
+#: src/init.php:725
+msgid "Place shortcode on your existing Term page to add an accept button."
+msgstr ""
+
+#: src/init.php:731
+msgid "Select countries"
+msgstr ""
+
+#: src/init.php:732
+#: src/init.php:743
+msgid " "
+msgstr ""
+
+#: src/init.php:733
+msgid "Refuse all countries?"
+msgstr ""
+
+#: src/init.php:734
+msgid "Save changes"
+msgstr ""
+
+#: src/init.php:735
+msgid "Options"
+msgstr ""
+
+#: src/init.php:736
+msgid "Select countries to refuse"
+msgstr ""
+
+#: src/init.php:737
+msgid "Only apply GDPR for EU Countries (E.g: Cookie Popup displays on countries you select below only)"
+msgstr ""
+
+#: src/init.php:738
+msgid "Redirect those countries to this page (works with non-admin accounts): "
+msgstr ""
+
+#: src/init.php:744
+msgid "Unsubscribe Page"
+msgstr ""
+
+#: src/init.php:746
+msgid "Are you using Mailchimp?"
+msgstr ""
+
+#: src/init.php:747
+msgid "Mailchimp Unsubscribe URL"
+msgstr ""
+
+#: src/init.php:748
+msgid "Enter your MailChimp Unsubscribe URL here. <a href=\"https://kb.mailchimp.com/lists/signup-forms/find-the-unsubscribe-link-for-your-list\" target=\"_blank\">How to get Mailchimp Unsubscribe URL?</a>"
+msgstr ""
+
+#: src/init.php:749
+msgid "Create Iframe"
+msgstr ""
+
+#: src/init.php:750
+msgid "Mailchimp Iframe Code"
+msgstr ""
+
+#: src/init.php:751
 msgid "Copy this iframe code and insert to your Unsubscribe page"
+msgstr ""
+
+#: src/Integrations.php:186
+#: src/Integrations.php:190
+#: src/Integrations.php:193
+#: src/Integrations.php:197
+msgid "By submitting this form, you hereby agree that we may collect, store and process your data that you provided."
+msgstr ""
+
+#: src/Integrations.php:205
+msgid "Do you agree to storage of your data?"
+msgstr ""
+
+#: src/Integrations.php:206
+msgid "Yes"
+msgstr ""
+
+#: src/Integrations.php:207
+msgid "You have to agree with permision"
+msgstr ""
+
+#: src/Policy.php:29
+msgid "You've accepted the Privacy Policy."
+msgstr ""
+
+#: src/PrivacySettingsPage.php:15
+msgid "We use cookies to provide a personalised experience for our users."
+msgstr ""
+
+#: src/PrivacySettingsPage.php:16
+msgid "Third party service for managing advertisement activities related to the resource via Facebook"
+msgstr ""
+
+#: src/PrivacySettingsPage.php:17
+msgid "Used for aggregated statistics to improve user experience on the resource."
+msgstr ""
+
+#: src/PrivacySettingsPage.php:58
+msgid "Name"
+msgstr ""
+
+#: src/PrivacySettingsPage.php:60
+msgid "Enable ?"
+msgstr ""
+
+#: src/PrivacySettingsPage.php:65
+msgid "Cookie"
 msgstr ""
 
 #: views/cookie-popup.php:9
@@ -1282,7 +1437,8 @@ msgstr ""
 msgid "Decline Text"
 msgstr ""
 
-#: views/cookie-popup.php:39 views/cookie-popup.php:47
+#: views/cookie-popup.php:39
+#: views/cookie-popup.php:47
 msgid "Display all pages but except"
 msgstr ""
 
@@ -1292,21 +1448,4 @@ msgstr ""
 
 #: views/cookie-popup.php:80
 msgid "Where you want to display"
-msgstr ""
-
-#. Plugin Name of the plugin/theme
-msgid "Ninja GDPR Compliance"
-msgstr ""
-
-#. Plugin URI of the plugin/theme
-#. Author URI of the plugin/theme
-msgid "http://ninjateam.org"
-msgstr ""
-
-#. Description of the plugin/theme
-msgid "GDPR Compliance 2018 for WordPress"
-msgstr ""
-
-#. Author of the plugin/theme
-msgid "NinjaTeam"
 msgstr ""

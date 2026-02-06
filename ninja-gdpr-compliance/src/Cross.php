@@ -91,7 +91,7 @@ if ( !class_exists('NjtCross') ) {
                 if ( !in_array($screen->id , array('plugins', 'dashboard', 'upload')) ) return;
             } else return;
 
-            wp_register_script("njt-popup-{$this->pluginPrefix}-cross", $this->pluginDirURL . '/assets/admin/js/cross.js', ['jquery'], '1.0', true);
+            wp_register_script("njt-popup-{$this->pluginPrefix}-cross", $this->pluginDirURL . '/assets/admin/js/cross.js', ['jquery'], NJT_GDPR_VERSION, true);
             wp_localize_script("njt-popup-{$this->pluginPrefix}-cross", 'njtCross', array(
                 'nonce' => wp_create_nonce("njt_{$this->pluginPrefix}_cross_nonce"),
                 'media_url' => admin_url('upload.php'),

@@ -47,7 +47,7 @@ class NjtGdprIntegrations
     {
         $settings = $this->getSettings();
         if ($settings['cf7']['is_enable']) {
-            $code .= '<p class="njt-gdpr-cf7-p"><label>'.esc_html($settings['cf7']['des']).'<span class="wpcf7-form-control-wrap njt-gdpr-accept"><span class="wpcf7-form-control wpcf7-acceptance"><span class="wpcf7-list-item"><input type="checkbox" name="njt-gdpr-accept" value="1" aria-invalid="false"></span></span></span></label></p>';
+            $code .= '<p class="njt-gdpr-cf7-p"><label><span class="wpcf7-form-control-wrap njt-gdpr-accept"><span class="wpcf7-form-control wpcf7-acceptance"><span class="wpcf7-list-item" style="margin:0 10px;"><input type="checkbox" name="njt-gdpr-accept" value="1" aria-invalid="false"></span></span></span>' . esc_html($settings['cf7']['des']) . '</label></p>';
         }
         return $code;
     }
@@ -102,7 +102,7 @@ class NjtGdprIntegrations
     {
         $settings = $this->getSettings();
         if ($settings['comment']['is_enable']) {
-            $submit_field = '<p class="njt-gdpr-comment-accept-row"><label class="class="njt-gdpr-comment-accept-label">'.esc_html($settings['comment']['des']).'<input type="checkbox" name="njt-gdpr-comment-accept" id="njt-gdpr-comment-accept" value="1" aria-invalid="false"></label></p>' . $submit_field;
+            $submit_field = '<p class="njt-gdpr-comment-accept-row"><label class="class="njt-gdpr-comment-accept-label"><input style="margin-right: 5px;" type="checkbox" name="njt-gdpr-comment-accept" id="njt-gdpr-comment-accept" value="1" aria-invalid="false">'.esc_html($settings['comment']['des']).'</label></p>' . $submit_field;
         }
         return $submit_field;
     }
@@ -172,7 +172,7 @@ class NjtGdprIntegrations
     {
         $settings = $this->getSettings();
         if ($settings['woo']['is_enable'] && !empty($settings['woo']['des'])) {
-            echo '<p class="njt-gdpr-woo-accept-row"><label class="njt-gdpr-woo-accept-label">'.esc_html($settings['woo']['des']).' <input type="checkbox" id="njt-gdpr-accept-woo" value="1" /></label></p>';
+            echo '<p class="njt-gdpr-woo-accept-row"><label class="njt-gdpr-woo-accept-label"><input style="margin-right: 5px;" type="checkbox" id="njt-gdpr-accept-woo" value="1" />'.esc_html($settings['woo']['des']).'</label></p>';
         }
     }
     public function getSettings()
@@ -247,7 +247,7 @@ class NjtGdprIntegrations
         check_ajax_referer('njt_gdpr', 'nonce', true);
 
         if( ! njt_gdpr_has_permission() ) {
-            wp_send_json_error();
+            wp_send_json_error( array('mess' => __('Permission denied.', NJT_GDPR_I18N)) );
         }
         
         $settings = ((isset($_POST['settings'])) ? (array)$_POST['settings']: array());
@@ -263,7 +263,7 @@ class NjtGdprIntegrations
         $settings['gg']['is_enable'] = (($settings['gg']['is_enable'] == 'true') ? '1' : '0');
 
         update_option('njt_gdpr_integrations', $settings);
-        wp_send_json_success();
+        wp_send_json_success(array('mess' => __('Success', NJT_GDPR_I18N)));
     }
     public function ajaxSavePrivacySettings()
     {

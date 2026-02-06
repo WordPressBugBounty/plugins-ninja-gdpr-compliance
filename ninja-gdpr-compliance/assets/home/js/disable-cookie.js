@@ -1,10 +1,1 @@
-console.log('Cookie blocked');
-if(!document.__defineGetter__) {
-    Object.defineProperty(document, 'cookie', {
-        get: function(){ console.log('Cookie blocked'); return ''; },
-        set: function(){ console.log('Cookie blocked'); return '' },
-    });
-} else {
-    document.__defineGetter__("cookie", function() { console.log('Cookie blocked'); return '';} );
-    document.__defineSetter__("cookie", function() {console.log('Cookie blocked'); } );
-}
+console.log("Cookie blocked"),document.__defineGetter__?(document.__defineGetter__("cookie",function(){return console.log("Cookie blocked"),""}),document.__defineSetter__("cookie",function(){console.log("Cookie blocked")})):Object.defineProperty(document,"cookie",{get:function(){return console.log("Cookie blocked"),""},set:function(){return console.log("Cookie blocked"),""}});

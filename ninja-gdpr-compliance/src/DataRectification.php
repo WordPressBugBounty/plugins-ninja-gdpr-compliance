@@ -112,7 +112,7 @@ class NjtGdprDataRectification
     }
     public function ajaxRequestAction()
     {
-        if(!apply_filters('njt_gdpr_can_action_data_rectification', true)){
+        if(!apply_filters('njt_gdpr_can_action_data_rectification', true) || ! njt_gdpr_has_permission()){
             wp_send_json_error(array('mess' => __('Permission denied.', NJT_GDPR_I18N)));
         }
         check_ajax_referer('njt_gdpr', 'nonce', true);
@@ -123,23 +123,27 @@ class NjtGdprDataRectification
         $settings = $this->getSettings();
         if (count($ids) > 0) {
             if ($request_action == 'remove') {
-                foreach ($ids as $k => $v) {
-                    $check_post = get_post($v);
+                foreach ($ids as $k => $id) {
+                    $check_post = get_post($id);
                     if ($check_post->post_type == $this->post_type) {
-                        wp_delete_post($v, true);
+                        wp_delete_post($id, true);
                     }
                 }
                 wp_send_json_success(array('mess' => __('Success', NJT_GDPR_I18N), 'requests' => $this->getRequests()));
             } elseif ($request_action == 'send-email') {
                 $error = null;
-                foreach ($ids as $k => $v) {
-                    $request_info = get_post($v);
+                $sentEmails = array();
+                foreach ($ids as $k => $id) {
+                    $request_info = get_post($id);
                     if (empty($settings['email_subject']) || empty($settings['email_body'])) {
                         $error = __('Error, please enter Email Subject and Email Body first, then save and try again.', NJT_GDPR_I18N);
                         break;
                     } else {
-                        wp_mail($request_info->post_title, $settings['email_subject'], $settings['email_body']);
-                        update_post_meta($v, '_date_mail_sent', date('Y-m-d H:i:s', current_time('timestamp', 0)));
+                        if( ! in_array($request_info->post_title, $sentEmails) ) {
+                            wp_mail($request_info->post_title, $settings['email_subject'], $settings['email_body'], array('Content-Type: text/html'));
+                            update_post_meta($id, '_date_mail_sent', date('Y-m-d H:i:s', current_time('timestamp', 0)));
+                            $sentEmails[] = $request_info->post_title;
+                        }
                     }
                 }
                 if (is_null($error)) {
@@ -194,7 +198,7 @@ class NjtGdprDataRectification
                 if($current_user->ID) {
                     $message .= __("User ID:", NJT_GDPR_I18N) .$current_user->ID .  '<br />';
                 }
-                wp_mail($to, $subject, $message);
+                wp_mail($to, $subject, $message, array('Content-Type: text/html'));
             }
         }
         $settings = $this->getSettings();
@@ -230,7 +234,7 @@ class NjtGdprDataRectification
                 <textarea name="your-new-information" id="your-new-information" cols="30" rows="10" required></textarea>
             </p>
             <p>
-                <button type="button" class="njt_gdpr_data_rectification_btn"><?php echo esc_html($atts['btn_text']); ?></button>
+                <button type="button" class="njt_gdpr_data_rectification_btn njt_gdpr_btn"><?php echo esc_html($atts['btn_text']); ?></button>
             </p>
         </form>
         <?php
@@ -238,7 +242,7 @@ class NjtGdprDataRectification
     }
     public function registerWpEnqueue()
     {
-        wp_register_script('njt-gdpr-data-rectification', NJT_GDPR_URL . '/assets/home/js/data-rectification.js', array('jquery'), '1.0', false);
+        wp_register_script('njt-gdpr-data-rectification', NJT_GDPR_URL . '/assets/home/js/data-rectification.js', array('jquery'), NJT_GDPR_VERSION, false);
         wp_enqueue_script('njt-gdpr-data-rectification');
         wp_localize_script('njt-gdpr-data-rectification', 'njt_gdpr_data_rectification', array(
             'ajaxurl' => admin_url('admin-ajax.php'),
